@@ -10,6 +10,8 @@ source:
   sha256: b2f0ffd29d1f8cea10c6c35749fd481acffd6e57a20db54d218caff69ea623a8
 
 build:
+  run_exports:
+    - {{ pin_subpackage("xforms", max_pin="x") }}
   number: 1
   skip: True  # [not linux]
 
