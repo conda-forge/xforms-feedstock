@@ -12,7 +12,7 @@ source:
 build:
   run_exports:
     - {{ pin_subpackage("xforms", max_pin="x") }}
-  number: 0
+  number: 1
   skip: True  # [not linux]
 
 requirements:
@@ -29,14 +29,14 @@ requirements:
     - meson >=0.50
     - ninja
     - pkg-config
-    - jpeg
+    - libjpeg-turbo
     - xorg-libx11
   host:
-    - jpeg
+    - libjpeg-turbo
     - xorg-libx11
     - xorg-libxfixes  # [linux]
   run:
-    - jpeg
+    - libjpeg-turbo
     - xorg-libx11
     - xorg-libxfixes  # [linux]
 
