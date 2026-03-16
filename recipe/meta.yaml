@@ -2,8 +2,8 @@
 {% set version = "0.9999.5" %}
 
 package:
-   name: "{{ name }}"
-   version: "{{ version }}"
+  name: "{{ name }}"
+  version: "{{ version }}"
 
 source:
   url: http://software.igwn.org/sources/source/xform-{{ version }}.tar.gz
@@ -12,20 +12,13 @@ source:
 build:
   run_exports:
     - {{ pin_subpackage("xforms", max_pin="x") }}
-  number: 2
-  skip: True  # [not linux]
+  number: 3
+  skip: true  # [not linux]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxext') }}     # [linux]
-    - {{ cdt('expat') }}     # [linux]
     - meson >=0.50
     - ninja
     - pkg-config
@@ -35,6 +28,7 @@ requirements:
     - libjpeg-turbo
     - xorg-libx11
     - xorg-libxfixes  # [linux]
+    - libgl-devel                    # [linux]
   run:
     - libjpeg-turbo
     - xorg-libx11
@@ -47,7 +41,7 @@ test:
     - test -x ${PREFIX}/bin/fdesign  # [unix]
     - test -f ${PREFIX}/lib/libforms.so  # [unix]
     - pkg-config --print-errors --modversion xforms
-     
+
 
 about:
   home: https://git.ligo.org/virgo/virgoapp/Xform/
@@ -57,10 +51,10 @@ about:
   license_file: "COPYING"
   summary: XForms is a graphical user interface toolkit for X based on the X11 Xlib library
   description: |
-           This is the first Open Source distribution of the XForms Library, a
-           graphical user interface toolkit for X Window Systems.  It should be
-           considered "provisional".  Hence the Version 0.9999.  There should be
-           several more 9's following the decimal point.
+    This is the first Open Source distribution of the XForms Library, a
+    graphical user interface toolkit for X Window Systems.  It should be
+    considered "provisional".  Hence the Version 0.9999.  There should be
+    several more 9's following the decimal point.
 
 
 extra:
