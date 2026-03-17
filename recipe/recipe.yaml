@@ -11,6 +11,9 @@ package:
 source:
   url: https://software.igwn.org/sources/source/${{ name|lower }}-${{ version }}.tar.gz
   sha256: 8d2c39e72c2569c58ae3aef741f8bab49356cbc4804dab1d8252a93ad6dcb92b
+  patches:
+    # Backport https://git.ligo.org/virgo/virgoapp/Xform/-/commit/0762d96c396420cd39d8ff7812c2fd03a87e937e
+    - 0001-add-missing-header-includes.patch
 
 build:
   number: 3
