@@ -16,7 +16,6 @@ graphical user interface toolkit for X Window Systems.  It should be
 considered "provisional".  Hence the Version 0.9999.  There should be
 several more 9's following the decimal point.
 
-
 Current build status
 ====================
 
