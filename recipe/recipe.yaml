@@ -1,0 +1,68 @@
+schema_version: 1
+
+context:
+  name: Xform
+  version: 0.9999.5
+
+package:
+  name: ${{ name|lower }}s
+  version: ${{ version }}
+
+source:
+  url: https://software.igwn.org/sources/source/${{ name|lower }}-${{ version }}.tar.gz
+  sha256: 8d2c39e72c2569c58ae3aef741f8bab49356cbc4804dab1d8252a93ad6dcb92b
+  patches:
+    # Backport https://git.ligo.org/virgo/virgoapp/Xform/-/commit/0762d96c396420cd39d8ff7812c2fd03a87e937e
+    - 0001-add-missing-header-includes.patch
+
+build:
+  number: 3
+  skip: not linux
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - meson >=0.50
+    - ninja
+    - pkg-config
+    - libjpeg-turbo
+    - xorg-libx11
+  host:
+    - libgl-devel
+    - libjpeg-turbo
+    - xorg-libx11
+    - xorg-libxfixes
+  run_exports:
+    - ${{ pin_subpackage("xforms", upper_bound="x") }}
+
+tests:
+  - package_contents:
+      bin:
+        - fdesign
+      lib:
+        - forms
+  - requirements:
+      run:
+        - pkg-config
+    script:
+      - pkg-config --print-errors --exact-version "${{ version }}" xforms
+
+about:
+  summary: XForms is a graphical user interface toolkit for X based on the X11 Xlib library
+  description: |
+    This is the first Open Source distribution of the XForms Library, a
+    graphical user interface toolkit for X Window Systems.  It should be
+    considered "provisional".  Hence the Version 0.9999.  There should be
+    several more 9's following the decimal point.
+  homepage: https://git.ligo.org/virgo/virgoapp/Xform/
+  repository: https://git.ligo.org/virgo/virgoApp/Xform/
+  license: LGPL-2.0-only
+  license_file: COPYING
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - erinelizabethseder-virgo
+    - fcarbogn
