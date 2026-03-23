@@ -29,7 +29,8 @@ requirements:
     - ${{ stdlib('c') }}
     - make
   host:
-    - libgl-devel
+    - if: linux
+      then: libgl-devel
     - libjpeg-turbo
     - xorg-libx11
     - xorg-libxpm
@@ -45,7 +46,8 @@ tests:
       lib:
         - flimage
         - forms
-        - formsGL
+        - if: linux
+          then: formsGL
   - requirements:
       run:
         - pkg-config
