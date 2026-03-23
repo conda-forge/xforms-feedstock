@@ -3,49 +3,26 @@ About xforms-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/xforms-feedstock/blob/main/LICENSE.txt)
 
-Home: https://git.ligo.org/virgo/virgoapp/Xform/
+Home: http://xforms-toolkit.org/
 
 Package license: LGPL-2.0-only
 
-Summary: XForms is a graphical user interface toolkit for X based on the X11 Xlib library
+Summary: A GUI Toolkit for X Window Systems
 
-Development: https://git.ligo.org/virgo/virgoApp/Xform/
+Development: https://cgit.git.savannah.nongnu.org/cgit/xforms.git
 
-This is the first Open Source distribution of the XForms Library, a
-graphical user interface toolkit for X Window Systems.  It should be
-considered "provisional".  Hence the Version 0.9999.  There should be
-several more 9's following the decimal point.
+Forms Library for X (xforms) is a GUI toolkit and builder for the
+X Window Systems and runs on all major UNIX platforms as well as OpenVMS and OS2.
+Forms Library is too complex to be described in the "man" page format.
+Ask your system administrator for the location of the HTML, PDF
+or PostScript document or follow the links on the Forms Library's home page
+for an online version of the documentation.
 
 Current build status
 ====================
 
 
 <table>
-    
-  <tr>
-    <td>Azure</td>
-    <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
-    </td>
-  </tr>
 </table>
 
 Current release info
@@ -169,6 +146,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@EmmanuelP](https://github.com/EmmanuelP/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
 * [@erinelizabethseder-virgo](https://github.com/erinelizabethseder-virgo/)
 * [@fcarbogn](https://github.com/fcarbogn/)
