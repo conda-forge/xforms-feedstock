@@ -2,8 +2,12 @@
 
 set -ex
 
+# Update autoconfig source files
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./config/
+autoconf
+
 # Configure
-${SRC_DIR}/configure \
+./configure \
   --prefix="$PREFIX" \
   --libdir="${PREFIX}/lib" \
   --enable-shared \

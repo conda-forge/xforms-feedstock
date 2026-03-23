@@ -27,6 +27,8 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
+    - autoconf
+    - gnuconfig
     - make
   host:
     - if: linux
