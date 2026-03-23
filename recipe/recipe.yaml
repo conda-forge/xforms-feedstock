@@ -19,7 +19,8 @@ build:
     overdepending_behavior: error
     overlinking_behavior: error
   number: 0
-  skip: not linux
+  skip:
+    - win
 
 requirements:
   build:
