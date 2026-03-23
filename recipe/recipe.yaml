@@ -1,39 +1,42 @@
 schema_version: 1
 
 context:
-  name: Xform
-  version: 0.9999.5
+  name: xforms
+  version: 1.2.4
 
 package:
-  name: ${{ name|lower }}s
+  name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://software.igwn.org/sources/source/${{ name|lower }}-${{ version }}.tar.gz
-  sha256: 8d2c39e72c2569c58ae3aef741f8bab49356cbc4804dab1d8252a93ad6dcb92b
+  url: https://download.savannah.nongnu.org/releases/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 78cc6b07071bbeaa1f906e0a22d5e9980e48f8913577bc082d661afe5cb75696
   patches:
-    # Backport https://git.ligo.org/virgo/virgoapp/Xform/-/commit/0762d96c396420cd39d8ff7812c2fd03a87e937e
-    - 0001-add-missing-header-includes.patch
+    - linker-error.patch
 
 build:
-  number: 3
-  skip: not linux
+  dynamic_linking:
+    overdepending_behavior: error
+    overlinking_behavior: error
+  number: 0
+  skip:
+    - win
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
-    - meson >=0.50
-    - ninja
-    - pkg-config
-    - libjpeg-turbo
-    - xorg-libx11
+    - autoconf
+    - gnuconfig
+    - make
   host:
-    - libgl-devel
+    - if: linux
+      then: libgl-devel
     - libjpeg-turbo
     - xorg-libx11
-    - xorg-libxfixes
+    - xorg-libxpm
+    - xorg-xorgproto
   run_exports:
     - ${{ pin_subpackage("xforms", upper_bound="x") }}
 
@@ -41,28 +44,36 @@ tests:
   - package_contents:
       bin:
         - fdesign
+        - fd2ps
       lib:
+        - flimage
         - forms
+        - if: linux
+          then: formsGL
   - requirements:
       run:
         - pkg-config
     script:
+      - fdesign -version
       - pkg-config --print-errors --exact-version "${{ version }}" xforms
 
 about:
-  summary: XForms is a graphical user interface toolkit for X based on the X11 Xlib library
+  summary: A GUI Toolkit for X Window Systems
   description: |
-    This is the first Open Source distribution of the XForms Library, a
-    graphical user interface toolkit for X Window Systems.  It should be
-    considered "provisional".  Hence the Version 0.9999.  There should be
-    several more 9's following the decimal point.
-  homepage: https://git.ligo.org/virgo/virgoapp/Xform/
-  repository: https://git.ligo.org/virgo/virgoApp/Xform/
+    Forms Library for X (xforms) is a GUI toolkit and builder for the
+    X Window Systems and runs on all major UNIX platforms as well as OpenVMS and OS2.
+    Forms Library is too complex to be described in the "man" page format.
+    Ask your system administrator for the location of the HTML, PDF
+    or PostScript document or follow the links on the Forms Library's home page
+    for an online version of the documentation.
+  homepage: http://xforms-toolkit.org/
+  repository: https://cgit.git.savannah.nongnu.org/cgit/xforms.git
   license: LGPL-2.0-only
-  license_file: COPYING
+  license_file: COPYING.LIB
 
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - EmmanuelP
     - erinelizabethseder-virgo
     - fcarbogn

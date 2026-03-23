@@ -2,17 +2,37 @@
 
 set -ex
 
-meson_config_args=(
-  --prefix="$PREFIX"
-  --libdir=lib
-  --wrap-mode=nofallback
-  --buildtype=release
-  --backend=ninja
-  -Db_lundef=false
-)
+# Update autoconfig source files
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./config/
+autoconf
 
-mkdir forgebuild
-cd forgebuild
-meson setup .. "${meson_config_args[@]}"
-ninja -v
-ninja install
+# Configure
+./configure \
+  --prefix="$PREFIX" \
+  --libdir="${PREFIX}/lib" \
+  --enable-shared \
+  --disable-static \
+;
+
+# Build
+make -j${CPU_COUNT}
+
+# Test
+make check
+
+# Install
+make install
+
+# Install pkg-config file
+mkdir -p "${PREFIX}/lib/pkgconfig"
+cat << EOF > "${PREFIX}/lib/pkgconfig/${PKG_NAME}.pc"
+prefix=${PREFIX}
+libdir=\${prefix}/lib
+includedir=\${prefix}/include
+
+Name: ${PKG_NAME}
+Description: ${PKG_NAME} library
+Version: ${PKG_VERSION}
+Libs: -L\${libdir} -lforms
+Cflags: -I\${includedir}
+EOF

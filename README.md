@@ -3,18 +3,20 @@ About xforms-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/xforms-feedstock/blob/main/LICENSE.txt)
 
-Home: https://git.ligo.org/virgo/virgoapp/Xform/
+Home: http://xforms-toolkit.org/
 
 Package license: LGPL-2.0-only
 
-Summary: XForms is a graphical user interface toolkit for X based on the X11 Xlib library
+Summary: A GUI Toolkit for X Window Systems
 
-Development: https://git.ligo.org/virgo/virgoApp/Xform/
+Development: https://cgit.git.savannah.nongnu.org/cgit/xforms.git
 
-This is the first Open Source distribution of the XForms Library, a
-graphical user interface toolkit for X Window Systems.  It should be
-considered "provisional".  Hence the Version 0.9999.  There should be
-several more 9's following the decimal point.
+Forms Library for X (xforms) is a GUI toolkit and builder for the
+X Window Systems and runs on all major UNIX platforms as well as OpenVMS and OS2.
+Forms Library is too complex to be described in the "man" page format.
+Ask your system administrator for the location of the HTML, PDF
+or PostScript document or follow the links on the Forms Library's home page
+for an online version of the documentation.
 
 Current build status
 ====================
@@ -38,6 +40,34 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12563&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/xforms-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -169,6 +199,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@EmmanuelP](https://github.com/EmmanuelP/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
 * [@erinelizabethseder-virgo](https://github.com/erinelizabethseder-virgo/)
 * [@fcarbogn](https://github.com/fcarbogn/)
